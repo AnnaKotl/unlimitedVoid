@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* --- Base resets / tweaks --- */
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0%;
+  background-color: #fafafa;
+  color: rgba(0, 0, 0, 1);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+  line-height: 100%;
+  letter-spacing: -1%;
+  margin: 0;
+}
+
+/* Text sizes for consistency */
+.text-xs {
+  font-size: 12px;
+}
+.text-sm {
+  font-size: 14px;
+}
+.text-md {
+  font-size: 16px;
+}
+.text-lg {
+  font-size: 19px;
+}
+.text-header {
+  font-size: 24px;
+}
+
+/* Buttons */
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.button-loadmore {
+  background-color: rgba(146, 146, 146, 1);
+  border: 1px solid rgba(146, 146, 146, 1);
+  color: rgba(146, 146, 146, 1);
+  border-radius: 14px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  line-height: 100%;
+  letter-spacing: -3%;
+  background: transparent;
+  padding: 8px 26px;
+}
+
+.button-loadmore:hover {
+  border-color: rgba(64, 175, 121, 1);
+  color: rgba(64, 175, 121, 1);
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.12);
+}
+
+/* Header overlay */
+.header-overlay {
+  background: rgba(255, 255, 255, 0.67);
+  box-shadow: 0px 4px 24px 0px rgba(0, 0, 0, 0.12),
+    inset 0px 12px 24px 0px rgba(0, 0, 0, 0.12);
+}
+
+.accent-color {
+  background: rgba(61, 142, 218, 1);
+}
+
+/* Gradient accent class */
+.gradient-accent {
+  background: linear-gradient(235.02deg, #40af79 8.03%, #124757 90.34%);
+}
+
+/* Misc helpers */
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-4 {
+  padding: 16px;
+}
+.mt-6 {
+  margin-top: 24px;
+}
