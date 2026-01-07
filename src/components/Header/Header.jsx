@@ -15,11 +15,13 @@ export default function Header({ onFilter }) {
         {/* DESKTOP */}
         <div className="hidden md:grid w-full xl:max-w-[1100px] grid-cols-[1fr_2fr] items-center gap-[40px] lg:gap-[86px] mx-auto">
           <div className="flex justify-center md:justify-end py-2 px-1 lg:pb-[28px] lg:pt-[6px]">
-            <img
-              src="/vectors/logo.svg"
-              alt="Logo"
-              className="w-[80px] h-[80px] md:w-[100px] md:h-[100px] lg:w-[138px] lg:h-[138px]"
-            />
+            <a href="/">
+              <img
+                src="/vectors/logo.svg"
+                alt="Logo"
+                className="w-[80px] h-[80px] md:w-[100px] md:h-[100px] lg:w-[138px] lg:h-[138px]"
+              />
+            </a>
           </div>
           <div className="grid grid-rows-[auto_auto_auto] gap-3 lg:gap-4 py-2 md:py-0 text-center sm:text-left">
             <div className="flex flex-row items-center gap-2 lg:gap-4 flex-wrap">
@@ -48,13 +50,17 @@ export default function Header({ onFilter }) {
         {/* MOBILE */}
         <div className="flex flex-col md:hidden w-full max-w-[500px] mx-auto gap-2 pb-4 pt-2">
           <div className="flex flex-row items-center gap-4 w-full justify-center">
-            <img
-              src="/vectors/logo.svg"
-              alt="Logo"
-              className="w-[80px] h-[80px]"
-            />
+            <a href="/">
+              <img
+                src="/vectors/logo.svg"
+                alt="Logo"
+                className="w-[80px] h-[80px]"
+              />
+            </a>
             <div className="flex flex-col gap-1">
-              <h1 className="text-lg font-semibold text-center">monblanproject</h1>
+              <h1 className="text-lg font-semibold text-center">
+                monblanproject
+              </h1>
               <span className="text-[#3D8EDA] border border-[#3D8EDA] font-medium px-2 py-1 text-[12px] text-center">
                 Start on {formattedDate}
               </span>

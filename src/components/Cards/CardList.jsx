@@ -1,7 +1,6 @@
 import React, { useState, useMemo, useRef, useLayoutEffect } from "react";
 import Card from "./Card";
 import { cardsData } from "../../data/mockData";
-import Spinner from "../Layout/Spinner";
 
 const GRID_LIMIT = 8;
 const LIST_LIMIT = 8;
@@ -9,16 +8,15 @@ const LIST_LIMIT = 8;
 export default function CardList({ dateRange }) {
   const [view, setView] = useState("list");
   const [visibleCount, setVisibleCount] = useState(LIST_LIMIT);
-  const [loading, setLoading] = useState(false);
   const containerRef = useRef(null);
 
   const filteredCards = useMemo(() => {
     const fromDate = dateRange.from ? new Date(dateRange.from) : null;
     const toDate = dateRange.to ? new Date(dateRange.to) : null;
+
     return cardsData.filter((card) => {
-      const cardDate = new Date(
-        card.dateCreated.split("-").reverse().join("-")
-      );
+      const [yyyy, mm, dd] = card.dateCreated.split("-");
+      const cardDate = new Date(`${yyyy}-${mm}-${dd}`);
       if (fromDate && cardDate < fromDate) return false;
       if (toDate && cardDate > toDate) return false;
       return true;
@@ -26,15 +24,8 @@ export default function CardList({ dateRange }) {
   }, [dateRange]);
 
   const handleLoadMore = () => {
-    if (loading) return;
-    setLoading(true);
-    setTimeout(() => {
-      const increment = view === "grid" ? GRID_LIMIT : LIST_LIMIT;
-      setVisibleCount((prev) =>
-        Math.min(prev + increment, filteredCards.length)
-      );
-      setLoading(false);
-    }, 400);
+    const increment = view === "grid" ? GRID_LIMIT : LIST_LIMIT;
+    setVisibleCount((prev) => Math.min(prev + increment, filteredCards.length));
   };
 
   const toggleView = (mode) => setView(mode);
@@ -44,9 +35,7 @@ export default function CardList({ dateRange }) {
       className="w-full mx-auto relative z-20 min-h-[250px]"
       ref={containerRef}
     >
-      {loading && <Spinner />}
-
-      {!loading && filteredCards.length > 0 && (
+      {filteredCards.length > 0 ? (
         <>
           <div className="flex justify-end mb-3 lg:mb-6 gap-5">
             <ViewToggleButton
@@ -86,9 +75,7 @@ export default function CardList({ dateRange }) {
             </div>
           )}
         </>
-      )}
-
-      {!loading && filteredCards.length === 0 && (
+      ) : (
         <div className="flex justify-center items-center h-[200px] text-lg font-medium text-gray-400 italic">
           Oops, no data!
         </div>

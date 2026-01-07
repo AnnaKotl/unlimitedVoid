@@ -1,8 +1,20 @@
-const images = Array.from({ length: 14 }, (_, i) => `/images/${String(i + 1).padStart(3, "0")}.jpg`);
+const images = Array.from({ length: 15 }, (_, i) => `/images/${String(i + 1).padStart(3, "0")}.jpg`);
 
-export const cardsData = Array.from({ length: 14 }, (_, i) => {
-  const day = String(i + 1).padStart(2, "0");
-  const dateCreated = `${day}-01-2026`;
+const startDate = new Date("2026-01-01");
+const endDate = new Date("2026-01-07");
+
+const getDateForCard = (index) => {
+  const totalDays = (endDate - startDate) / (1000 * 60 * 60 * 24) + 1;
+  const dayOffset = index % totalDays;
+  const date = new Date(startDate.getTime() + dayOffset * 24 * 60 * 60 * 1000);
+  const dd = String(date.getDate()).padStart(2, "0");
+  const mm = String(date.getMonth() + 1).padStart(2, "0");
+  const yyyy = date.getFullYear();
+  return `${yyyy}-${mm}-${dd}`;
+};
+
+export const cardsData = Array.from({ length: 15 }, (_, i) => {
+  const dateCreated = getDateForCard(i);
   const dateData = [
     {
       date: dateCreated,
@@ -10,7 +22,6 @@ export const cardsData = Array.from({ length: 14 }, (_, i) => {
       comments: Math.floor(Math.random() * 10),
     },
   ];
-  const dateUploaded = `${day}-01-2026`;
 
   return {
     id: i + 1,
@@ -19,7 +30,7 @@ export const cardsData = Array.from({ length: 14 }, (_, i) => {
     todayComments: dateData[0].comments,
     dateCreated,
     dateData,
-    dateUploaded,
+    dateUploaded: dateCreated,
     ariaLabel: `post-${i + 1}`,
   };
 });
