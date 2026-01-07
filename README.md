@@ -1,8 +1,5 @@
 # unlimitedVoid
 
-## Demo
-[Netlify]
-
 ## Tech Stack
 - React 18
 - Vite
